@@ -12,14 +12,14 @@ const App = () => {
 
 
   useEffect(() => {
-    fetchEffects();
+    fetchRaces();
   },[query])
 
   const APP_KEY = 'OcnJg8N';
   const effectEndpoint = '/strains/search/race/';
   const url = `http://strainapi.evanbusse.com/${APP_KEY}${effectEndpoint}${query}`;
 
-  const fetchEffects = async () => {
+  const fetchRaces = async () => {
     const response = await fetch(url);
     const data = await response.json();
     setData(data);
@@ -54,7 +54,8 @@ const App = () => {
             <h1 className="hero__prompt">Uplifted</h1>
           </header>
           <div className="query__container">
-            <h2 className="query__prompt">Cannabis Races</h2>
+            <h2 className="query__prompt">Cannabis Types</h2>
+            <p className="query__text">Choose a Cannabis race with that effects that you desire and learn more about that unique strain.</p>
             <div className="query__wrapper">
               <div className="query__button">
                 <p className="query__race">Sativa</p>
@@ -84,9 +85,3 @@ const App = () => {
 }
 
 export default App;
-
-          // <div>
-          //   {strains.map((strain, index) => (
-          //     <Strain key={index} strain={strain}/>
-          //   ))}
-          // </div>

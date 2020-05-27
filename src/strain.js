@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from 'react';
-import StrainsModal from './strainsModal'
-import strainImage from './assets/leaf.png'
+import StrainsModal from './strainsModal';
+import strainImage from './assets/leaf.png';
 
 const Strain = ({strain}) => {
   const [description, setDescription] = useState('');
@@ -13,29 +13,25 @@ const Strain = ({strain}) => {
   const getDescription = async strain => {
     const response = await fetch(url + strain.id);
     const data = await response.json();
-    console.log(data);
     setDescription(data.desc);
     setModal(true);
   }
 
   const close = () => {
-    debugger;
     setDescription('');
     setModal(false);
   }
   return (
-    <div className="strains__card">
-      <div className="strains__image">
+    <div className="strain__card">
+      <div className="strain__image">
         <img src={strainImage}/>
       </div>
       <h3>{strain.name}</h3>
-      <p>{strain.id}</p>
-      <p>{strain.race}</p>
 
-      <button onClick={() => getDescription(strain)}>
-        More Info
+      <button className="strain__button" onClick={() => getDescription(strain)}>
+        Learn More
       </button>
-      {showModal? <StrainsModal description={description} onClick={() => close()}/> : null}
+      {showModal? <StrainsModal strain={strain.name} description={description} onClick={() => close()}/> : null}
     </div>
   )
 }
