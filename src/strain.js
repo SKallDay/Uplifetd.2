@@ -26,7 +26,7 @@ const Strain = ({strain}) => {
       <div className="strain__image">
         <img src={strainImage}/>
       </div>
-      <h3>{strain.name}</h3>
+      <h3 className="strain__heading">{strain.name}</h3>
 
       <button className="strain__button" onClick={() => getDescription(strain)}>
         Learn More
